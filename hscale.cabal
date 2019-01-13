@@ -1,0 +1,78 @@
+cabal-version: 1.12
+name:           hscale
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/hscale#readme>
+homepage:       https://github.com/githubuser/hscale#readme
+bug-reports:    https://github.com/githubuser/hscale/issues
+author:         Anton Kholomiov
+maintainer:     anton.kholomiov@gmail.com
+copyright:      2018 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/hscale
+
+library
+  exposed-modules:
+      Music.Scale.Format.Anamark
+      Music.Scale.Format.Input
+      Music.Scale.Format.Kbm
+      Music.Scale.Format.Kontakt
+      Music.Scale.Format.Scl
+      Music.Scale.Format.Types
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , aeson
+    , bytestring
+    , safe
+    , text
+    , time
+    , yaml
+    , vector
+  default-language: Haskell2010
+  default-extensions:
+    RecordWildCards
+    LambdaCase
+    OverloadedStrings
+    TemplateHaskell
+
+executable hscale
+  main-is: Main.hs
+  other-modules:
+      Paths_hscale
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , hscale
+    , optparse-applicative
+    , text
+    , time
+    , vector
+  default-language: Haskell2010
+  default-extensions:
+    OverloadedStrings
+    RecordWildCards
+
+test-suite hscale-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_hscale
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , hscale
+  default-language: Haskell2010
